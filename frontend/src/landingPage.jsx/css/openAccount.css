@@ -1,0 +1,26 @@
+/* openAccount  */
+.open-acc {
+  text-align: center;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+@media (max-width: 768px) {
+  .open-acc {
+    margin-top: 3rem;
+  }
+
+  .open-acc h1 {
+    font-size: 2rem;
+  }
+
+  .open-acc p {
+    font-size: 1rem;
+  }
+
+  .open-acc button {
+    width: 100%;
+    max-width: 200px;
+    font-size: 1rem;
+  }
+}

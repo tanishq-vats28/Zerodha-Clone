@@ -1,0 +1,25 @@
+/* education  */
+.home-education {
+  margin-top: 10rem;
+}
+
+.home-education img {
+  width: 100%;
+  max-width: 500px;
+  margin-left: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .home-education {
+    margin-top: 5rem;
+  }
+
+  .home-education img {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .home-education .col-md-6 {
+    margin-bottom: 2rem;
+  }
+}

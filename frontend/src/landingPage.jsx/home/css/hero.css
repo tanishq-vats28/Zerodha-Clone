@@ -1,0 +1,40 @@
+/* home hero */
+.homeHero {
+  text-align: center;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto 3rem;
+}
+
+.homeHero h1 {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .homeHero {
+    margin-top: 2rem;
+  }
+
+  .hero-image {
+    width: 90%;
+  }
+
+  .homeHero h1 {
+    font-size: 2rem;
+  }
+
+  .homeHero p {
+    font-size: 1rem;
+  }
+
+  .homeHero button {
+    width: 100%;
+    max-width: 200px;
+    font-size: 1rem;
+  }
+}

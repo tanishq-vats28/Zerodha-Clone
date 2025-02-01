@@ -1,0 +1,43 @@
+/* home stats */
+.statsPage {
+  margin-top: 10rem;
+}
+
+.stats-ecosystem img {
+  width: 100%;
+  max-width: 850px;
+  margin-left: 2rem;
+}
+
+.stats-card {
+  margin-top: 3rem;
+}
+
+a {
+  text-decoration: none;
+  margin-right: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .statsPage {
+    margin-top: 5rem;
+  }
+
+  .stats-ecosystem img {
+    margin-left: 0;
+  }
+
+  .stats-card {
+    margin-top: 2rem;
+  }
+
+  a {
+    display: block;
+    margin: 1rem 0;
+  }
+
+  .text-center img {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}

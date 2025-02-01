@@ -1,0 +1,26 @@
+.hero-section {
+  padding: 2rem 0 !important;
+}
+
+@media (min-width: 992px) {
+  .hero-section {
+    padding: 2rem 7rem 2rem 10rem !important;
+  }
+}
+
+.support-links a {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media (min-width: 768px) {
+  .support-links a {
+    border-bottom: none;
+    margin-right: 1.5rem;
+  }
+}
+@media (max-width: 991px) {
+  .hero-section input.form-control {
+    padding-right: 1rem !important;
+  }
+}

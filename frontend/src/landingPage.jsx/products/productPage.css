@@ -1,0 +1,62 @@
+/* Base Styles */
+.product-page {
+  overflow-x: hidden;
+}
+
+.hero {
+  padding: 2rem 0;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .hero {
+    padding: 5rem 0;
+  }
+}
+
+.left-wing,
+.right-wing {
+  padding: 4rem 0;
+}
+
+.app-badges img {
+  transition: transform 0.3s ease;
+}
+
+.app-badges img:hover {
+  transform: translateY(-2px);
+}
+
+.universe .btn-primary {
+  background-color: #387ed1;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Mobile Optimization */
+@media (max-width: 767px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .left-wing,
+  .right-wing {
+    padding: 2rem 0;
+  }
+
+  .app-badges {
+    justify-content: center;
+  }
+
+  .universe .row-cols-md-2 > * {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+}
+
+/* Image Adjustments */
+img {
+  max-width: 100%;
+  height: auto;
+}

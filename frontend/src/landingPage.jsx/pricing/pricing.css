@@ -1,0 +1,39 @@
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .SubPricingDescription img {
+    height: 8rem !important;
+  }
+
+  .Brokerage ul {
+    padding-left: 1rem;
+  }
+}
+
+/* General Mobile-first Styles */
+.SubPricingDescription p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.Brokerage ul li {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.Brokerage a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.Brokerage a:hover {
+  text-decoration: underline;
+}

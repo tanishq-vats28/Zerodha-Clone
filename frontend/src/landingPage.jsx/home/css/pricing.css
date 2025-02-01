@@ -1,0 +1,22 @@
+/* pricing home */
+.home-pricing {
+  margin-top: 10rem;
+}
+
+@media (max-width: 768px) {
+  .home-pricing {
+    margin-top: 5rem;
+  }
+
+  .home-pricing .col-md-5 {
+    margin-bottom: 2rem;
+  }
+
+  .home-pricing .col-md-7 .row {
+    flex-direction: column;
+  }
+
+  .home-pricing .col-md-7 .col {
+    margin-bottom: 1rem;
+  }
+}

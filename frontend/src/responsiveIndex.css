@@ -1,0 +1,48 @@
+button {
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem !important;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem) !important;
+  max-width: 10rem !important;
+  padding: 0.8rem 1.5rem !important;
+  height: 3.5rem !important;
+  border-radius: 4px !important;
+  background-color: #387ed1 !important;
+  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  button {
+    font-size: clamp(0.8rem, 3vw, 0.9rem) !important;
+    padding: 0.6rem 1rem !important;
+    height: 3rem !important;
+    min-width: 8rem !important;
+    max-width: 200px !important;
+    width: auto !important;
+    display: block !important;
+    margin: 2rem auto 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  button {
+    font-size: 0.75rem !important;
+    padding: 0.5rem 0.8rem !important;
+    min-width: 7rem !important;
+    max-width: 160px !important;
+    height: 2.8rem !important;
+  }
+}
+/* team */
+.team-img {
+  height: 25rem;
+  width: 22rem;
+  border-radius: 50%;
+}
