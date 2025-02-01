@@ -26,7 +26,7 @@ function SignUp() {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = "http://localhost:3001/";
+          window.location.href = "https://neon-concha-0e83fb.netlify.app/";
         }, 1000);
       } else {
         handleError(message);

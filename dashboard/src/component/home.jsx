@@ -26,12 +26,14 @@ function Home() {
             setIsAuthenticated(true);
           } else {
             setIsAuthenticated(false);
-            window.location.href = "http://localhost:5173/";
+            window.location.href =
+              "https://extraordinary-stroopwafel-ebc42d.netlify.app/";
           }
         } catch (error) {
           console.error("Error fetching token:", error);
           setIsAuthenticated(false);
-          window.location.href = "http://localhost:5173/";
+          window.location.href =
+            "https://extraordinary-stroopwafel-ebc42d.netlify.app/";
         }
       };
 

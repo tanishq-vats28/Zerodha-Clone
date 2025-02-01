@@ -14,41 +14,43 @@ const app = express();
 const dbURI = process.env.MONGO_URL;
 const PORT = process.env.PORT || 3002;
 
-// Session configuration
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false, // Set to true if using HTTPS
+      secure: false,
       httpOnly: true,
       sameSite: "lax",
     },
   })
 );
 
-// Body parser middleware
 app.use(bodyParser.json());
 
 // CORS configuration
 app.use(
-  cors({
-    origin: [
-      "http://localhost:5174",
-      "http://localhost:5173",
-      "http://localhost:3001",
-    ], // Add your frontend origins
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow all HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
-    credentials: true, // Allow credentials (cookies, authorization headers)
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: true, // Required for HTTPS
+      httpOnly: true,
+      sameSite: "none", // Allow cross-origin cookies
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    },
+    store: MongoStore.create({
+      // Add session store
+      mongoUrl: process.env.MONGO_URL,
+      collectionName: "sessions",
+    }),
   })
 );
 
-// Handle preflight requests for all routes
 app.options("*", cors());
 
-// Database connection
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -61,7 +63,6 @@ mongoose
     console.error("Database connection error:", error);
   });
 
-// Routes
 app.use("/user", userRouter);
 app.use("/funds", fundsRouter);
 app.use("/fetch", fetchRouter);

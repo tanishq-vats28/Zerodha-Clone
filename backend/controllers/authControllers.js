@@ -35,11 +35,17 @@ module.exports.Login = async (req, res) => {
     const token = createSecretToken(user._id);
     req.session.token = token;
 
-    res.status(200).json({
-      message: user
-        ? "User logged in successfully"
-        : "User signed up and logged in successfully",
-      success: true,
+    // Explicitly save the session
+    req.session.save((err) => {
+      if (err) {
+        console.error("Session save error:", err);
+        return res.status(500).json({ message: "Session error" });
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Authentication successful",
+      });
     });
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
