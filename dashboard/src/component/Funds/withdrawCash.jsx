@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 function WithdrawCash({ fetchFunds }) {
   const [withdrawCash, setWithdrawCash] = useState("");
 
-  const withdrawCashUrl = "http://localhost:3002/funds/withdraw";
+  const withdrawCashUrl =
+    "https://zerodha-clone-6u0t.onrender.com/funds/withdraw";
 
   const handleError = (err) => toast.error(err, { position: "bottom-left" });
   const handleSuccess = (msg) =>

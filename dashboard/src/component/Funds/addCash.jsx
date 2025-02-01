@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 function AddCash({ fetchFunds }) {
   const [addCash, setAddCash] = useState("");
 
-  const addCashUrl = "http://localhost:3002/funds/add";
+  const addCashUrl = "https://zerodha-clone-6u0t.onrender.com/funds/add";
 
   const handleError = (err) => toast.error(err, { position: "bottom-left" });
   const handleSuccess = (msg) =>

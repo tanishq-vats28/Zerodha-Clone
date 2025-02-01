@@ -12,7 +12,7 @@ function SignUp() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const url = "http://localhost:3002/user/login";
+    const url = "https://zerodha-clone-6u0t.onrender.com/user/login";
 
     try {
       const { data } = await axios.post(

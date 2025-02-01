@@ -6,7 +6,7 @@ function Orders() {
   const [orders, setOrders] = useState([]);
 
   const fetchOrders = async () => {
-    const URL = "http://localhost:3002/fetch/orders";
+    const URL = "https://zerodha-clone-6u0t.onrender.com/fetch/orders";
     try {
       const token = localStorage.getItem("token");
       if (!token) {

@@ -17,7 +17,7 @@ function Topbar() {
 
   const handleLogout = async () => {
     try {
-      const url = "http://localhost:3002/user/logout";
+      const url = "https://zerodha-clone-6u0t.onrender.com/user/logout";
       await axios.post(url, {}, { withCredentials: true });
       localStorage.removeItem("token");
       window.location.href = "http://localhost:5173/";

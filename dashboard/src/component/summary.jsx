@@ -6,7 +6,7 @@ function Summary() {
 
   useEffect(() => {
     const fetchHoldings = async () => {
-      const URL = "http://localhost:3002/fetch/holdings";
+      const URL = "https://zerodha-clone-6u0t.onrender.com/fetch/holdings";
       try {
         const token = localStorage.getItem("token");
         if (!token) {

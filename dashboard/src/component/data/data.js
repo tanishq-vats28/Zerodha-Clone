@@ -2,11 +2,13 @@ import axios from "axios";
 
 const fetchStocks = async () => {
   try {
-    const response = await axios.get("http://localhost:3002/fetch/stocks");
-    return response.data.data; // Returns the data from the API
+    const response = await axios.get(
+      "https://zerodha-clone-6u0t.onrender.com/fetch/stocks"
+    );
+    return response.data.data;
   } catch (err) {
     console.error("Error fetching stocks:", err);
-    return []; // Return an empty array or handle the error as needed
+    return [];
   }
 };
 

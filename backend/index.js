@@ -22,8 +22,20 @@ app.use(
   cors({
     origin: ["http://localhost:5173", "http://localhost:3001"],
     credentials: true,
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "X-Requested-With",
+      "Accept",
+      "Origin",
+      "Access-Control-Allow-Credentials",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
+
+// Handle preflight requests
+app.options("*", cors());
 
 require("dotenv").config();
 const dbURI = process.env.MONGO_URL;

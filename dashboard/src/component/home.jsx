@@ -14,9 +14,12 @@ function Home() {
     } else {
       const fetchToken = async () => {
         try {
-          const { data } = await axios.get("http://localhost:3002/user/token", {
-            withCredentials: true,
-          });
+          const { data } = await axios.get(
+            "https://zerodha-clone-6u0t.onrender.com/user/token",
+            {
+              withCredentials: true,
+            }
+          );
 
           if (data.token) {
             localStorage.setItem("token", data.token);

@@ -69,9 +69,9 @@ const OrderForm = ({ onClose, name, price: initialPrice, mode }) => {
     console.log(mode);
     let url = "";
     if (mode === "buy") {
-      url = `http://localhost:3002/order/${mode}`;
+      url = `https://zerodha-clone-6u0t.onrender.com/order/${mode}`;
     } else {
-      url = `http://localhost:3002/order/${mode}`;
+      url = `https://zerodha-clone-6u0t.onrender.com/order/${mode}`;
     }
     const { qty, price } = formData;
     try {

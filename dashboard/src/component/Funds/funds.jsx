@@ -8,7 +8,7 @@ function Funds() {
   const [availableCash, setAvailableCash] = useState();
 
   const fetchFunds = async () => {
-    const URL = "http://localhost:3002/funds/fetch";
+    const URL = "https://zerodha-clone-6u0t.onrender.com/funds/fetch";
     try {
       const token = localStorage.getItem("token");
       if (!token) {
