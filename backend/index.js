@@ -14,33 +14,37 @@ const app = express();
 const dbURI = process.env.MONGO_URL;
 const PORT = process.env.PORT || 3002;
 
-// Session middleware configuration
+// Session configuration
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "defaultSecret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false, // Set to true only if using HTTPS
+      secure: false, // Set to true if using HTTPS
       httpOnly: true,
-      sameSite: "lax", // Recommended to avoid CSRF
+      sameSite: "lax",
     },
   })
 );
 
-// Middleware setup
+// Body parser middleware
 app.use(bodyParser.json());
+
+// Permissive CORS configuration
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:3001"], // Add other frontend origins if needed
-    credentials: true,
+    origin: "*", // Allow all origins
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow all HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
+    credentials: true, // Allow credentials (cookies, authorization headers)
   })
 );
 
-// Enable CORS preflight for all routes
+// Handle preflight requests for all routes
 app.options("*", cors());
 
-// Database connection and server start
+// Database connection
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -53,7 +57,7 @@ mongoose
     console.error("Database connection error:", error);
   });
 
-// API routes
+// Routes
 app.use("/user", userRouter);
 app.use("/funds", fundsRouter);
 app.use("/fetch", fetchRouter);
