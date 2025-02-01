@@ -1,8 +1,7 @@
+// controllers/authControllers.js
 const User = require("../model/userModel");
 const { createSecretToken } = require("../util/secretTocken.js");
 const bcrypt = require("bcrypt");
-
-const session = require("express-session");
 
 module.exports.Login = async (req, res) => {
   try {
@@ -33,19 +32,11 @@ module.exports.Login = async (req, res) => {
     }
 
     const token = createSecretToken(user._id);
-    req.session.token = token;
 
-    // Explicitly save the session
-    req.session.save((err) => {
-      if (err) {
-        console.error("Session save error:", err);
-        return res.status(500).json({ message: "Session error" });
-      }
-
-      res.status(200).json({
-        success: true,
-        message: "Authentication successful",
-      });
+    res.status(200).json({
+      success: true,
+      message: "Authentication successful",
+      token: token,
     });
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });

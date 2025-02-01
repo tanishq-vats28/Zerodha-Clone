@@ -1,11 +1,15 @@
-// authMiddleware.js
+// middleware/authMiddleware.js
+const jwt = require("jsonwebtoken");
+
 module.exports.isAuthenticated = (req, res, next) => {
-  if (!req.session.token) {
+  const token = req.headers.authorization?.split(" ")[1];
+
+  if (!token) {
     return res.status(401).json({ message: "Unauthorized" });
   }
 
   try {
-    const decoded = jwt.verify(req.session.token, process.env.TOKEN_KEY);
+    const decoded = jwt.verify(token, process.env.TOKEN_KEY);
     req.user = decoded;
     next();
   } catch (err) {

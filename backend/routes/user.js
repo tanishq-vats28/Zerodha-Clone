@@ -3,15 +3,21 @@ const {
   getToken,
   Logout,
 } = require("../controllers/authControllers.js");
-
-const router = require("express").Router();
+const { isAuthenticated } = require("../middleware/authMiddleware");
 
 const jwt = require("jsonwebtoken");
+const router = require("express").Router();
 
 router.post("/logout", Logout);
 
-router.get("/token", getToken);
+// router.get("/token", getToken);
 
 router.post("/login", Login);
 
+// router.post("/login", Login);
+
+// Example protected route
+router.get("/protected", isAuthenticated, (req, res) => {
+  res.json({ message: "Protected data" });
+});
 module.exports = router;

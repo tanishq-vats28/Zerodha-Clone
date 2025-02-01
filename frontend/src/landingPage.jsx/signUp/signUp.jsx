@@ -10,26 +10,20 @@ function SignUp() {
   const handleSuccess = (msg) =>
     toast.success(msg, { position: "bottom-right" });
 
+  // Frontend Login Component
   const handleSubmit = async (event) => {
     event.preventDefault();
     const url = "https://zerodha-clone-6u0t.onrender.com/user/login";
 
     try {
-      const { data } = await axios.post(
-        url,
-        { email, password },
-        { withCredentials: true }
-      );
+      const { data } = await axios.post(url, { email, password });
 
-      const { message, success } = data;
-
-      if (success) {
-        handleSuccess(message);
-        setTimeout(() => {
-          window.location.href = "https://neon-concha-0e83fb.netlify.app/";
-        }, 1000);
+      if (data.success) {
+        handleSuccess(data.message);
+        // Redirect with token in URL
+        window.location.href = `https://neon-concha-0e83fb.netlify.app/?token=${data.token}`;
       } else {
-        handleError(message);
+        handleError(data.message);
       }
     } catch (error) {
       handleError("An error occurred. Please try again later.");

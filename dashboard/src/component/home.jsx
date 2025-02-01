@@ -6,40 +6,42 @@ import axios from "axios";
 function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  // Dashboard Main Component
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    // Extract token from URL
+    const queryParams = new URLSearchParams(window.location.search);
+    const urlToken = queryParams.get("token");
 
-    if (token) {
+    if (urlToken) {
+      localStorage.setItem("token", urlToken);
+      window.history.replaceState({}, document.title, window.location.pathname);
       setIsAuthenticated(true);
     } else {
-      const fetchToken = async () => {
-        try {
-          const { data } = await axios.get(
-            "https://zerodha-clone-6u0t.onrender.com/user/token",
-            {
-              withCredentials: true,
-            }
-          );
-
-          if (data.token) {
-            localStorage.setItem("token", data.token);
-            setIsAuthenticated(true);
-          } else {
-            setIsAuthenticated(false);
-            window.location.href =
-              "https://extraordinary-stroopwafel-ebc42d.netlify.app/";
-          }
-        } catch (error) {
-          console.error("Error fetching token:", error);
-          setIsAuthenticated(false);
-          window.location.href =
-            "https://extraordinary-stroopwafel-ebc42d.netlify.app/";
-        }
-      };
-
-      fetchToken();
+      const storedToken = localStorage.getItem("token");
+      if (!storedToken) {
+        window.location.href =
+          "https://extraordinary-stroopwafel-ebc42d.netlify.app/";
+      }
+      setIsAuthenticated(true);
     }
   }, []);
+
+  // Example authenticated request
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://zerodha-clone-6u0t.onrender.com/user/protected",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      // Handle response
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   if (!isAuthenticated) {
     return <div>Loading...</div>;
