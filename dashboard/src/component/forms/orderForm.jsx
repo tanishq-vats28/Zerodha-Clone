@@ -97,9 +97,9 @@ const OrderForm = ({ onClose, name, price: initialPrice, mode }) => {
       if (response.data.success) {
         handleSuccess(response.data.message);
         setTimeout(() => {
-          window.location.reload();
+          window.location.href = "https://neon-concha-0e83fb.netlify.app/";
         }, 100);
-      } else if (!response.data.success) {
+      } else {
         handleError(response.data.message);
       }
       onClose();

@@ -19,9 +19,15 @@ function Topbar() {
   const handleLogout = async () => {
     try {
       const url = "https://zerodha-clone-6u0t.onrender.com/user/logout";
-      await axios.post(url, {}, { withCredentials: true });
-      localStorage.removeItem("token");
-      window.location.href = "http://localhost:5173/";
+
+      const response = await axios.post(url);
+
+      if (response.data.success) {
+        localStorage.removeItem("token");
+        window.location.href = "https://neon-concha-0e83fb.netlify.app/";
+      } else {
+        alert("Logout failed. Please try again.");
+      }
     } catch (error) {
       console.error("Logout failed:", error);
       alert("An error occurred during logout. Please try again.");

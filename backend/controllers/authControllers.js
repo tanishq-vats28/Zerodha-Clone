@@ -30,9 +30,7 @@ module.exports.Login = async (req, res) => {
         return res.status(500).json({ message: "Failed to create user" });
       }
     }
-    console.log("Login route", User);
     const token = createSecretToken(user._id);
-    console.log("Login route token:", token);
     res.status(200).json({
       success: true,
       message: "Authentication successful",
@@ -43,24 +41,11 @@ module.exports.Login = async (req, res) => {
   }
 };
 
-module.exports.getToken = async (req, res) => {
-  const token = req.session.token;
-
-  if (!token) {
-    return res.status(401).json({ message: "Not authenticated" });
-  }
-
-  res.status(200).json({ token });
-};
-
 module.exports.Logout = async (req, res) => {
   try {
-    req.session.destroy((err) => {
-      if (err) {
-        return res.status(500).json({ message: "Failed to log out" });
-      }
-      res.clearCookie("connect.sid");
-      return res.status(200).json({ message: "Logged out successfully" });
+    res.status(200).json({
+      success: true,
+      message: "Logged out successfully. Please clear your token client-side.",
     });
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });

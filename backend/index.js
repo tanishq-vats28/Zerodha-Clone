@@ -8,7 +8,6 @@ const app = express();
 const dbURI = process.env.MONGO_URL;
 const PORT = process.env.PORT || 3002;
 
-// CORS Configuration
 app.use(
   cors({
     origin: [
@@ -21,10 +20,8 @@ app.use(
   })
 );
 
-// Body Parser
 app.use(bodyParser.json());
 
-// Database Connection
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
@@ -38,7 +35,6 @@ mongoose
   })
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Routes
 app.use("/user", require("./routes/user"));
 app.use("/funds", require("./routes/funds"));
 app.use("/fetch", require("./routes/fetch"));
