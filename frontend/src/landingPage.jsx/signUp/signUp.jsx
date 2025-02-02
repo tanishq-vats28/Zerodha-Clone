@@ -10,7 +10,6 @@ function SignUp() {
   const handleSuccess = (msg) =>
     toast.success(msg, { position: "bottom-right" });
 
-  // Frontend Login Component
   const handleSubmit = async (event) => {
     event.preventDefault();
     const url = "https://zerodha-clone-6u0t.onrender.com/user/login";

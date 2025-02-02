@@ -15,7 +15,7 @@ function Team() {
           <h4 className="mt-4">Tanishq Vats</h4>
           <p className="text-muted">CSE Student</p>
         </div>
-        <div className="col-12 col-md-6 fs-5 d-flex mt-5">
+        <div className="col-12 col-md-6 fs-5 d-flex mt-5 pt-3">
           <div>
             <p>
               My name is Tanishq Vats, and I'm currently pursuing a Bachelor of
