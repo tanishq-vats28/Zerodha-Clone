@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Topbar() {
   const generateRandomValue = () => (Math.random() * 5).toFixed(2);
@@ -41,7 +42,7 @@ function Topbar() {
       </div>
       <Navbar expand="lg" className="navbar">
         <Container fluid>
-          <Navbar.Brand href="/">
+          <Navbar.Brand as={Link} to="/">
             <img
               src="media/unnamed-removebg-preview-1-1.png"
               alt="Logo"
@@ -51,16 +52,16 @@ function Topbar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto flex-column flex-lg-row gap-2 gap-lg-0">
-              <Nav.Link href="/" className="nav-link">
+              <Nav.Link as={Link} to="/" className="nav-link">
                 Dashboard
               </Nav.Link>
-              <Nav.Link href="/orders" className="nav-link">
+              <Nav.Link as={Link} to="/orders" className="nav-link">
                 Orders
               </Nav.Link>
-              <Nav.Link href="/holdings" className="nav-link">
+              <Nav.Link as={Link} to="/holdings" className="nav-link">
                 Holdings
               </Nav.Link>
-              <Nav.Link href="/funds" className="nav-link">
+              <Nav.Link as={Link} to="/funds" className="nav-link">
                 Funds
               </Nav.Link>
               <Nav.Link onClick={handleLogout} className="nav-link">

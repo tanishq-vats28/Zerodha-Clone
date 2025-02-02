@@ -18,14 +18,13 @@ function Home() {
       const storedToken = localStorage.getItem("token");
       if (!storedToken) {
         console.log("Stored token", storedToken);
-        // window.location.href =
-        //   "https://extraordinary-stroopwafel-ebc42d.netlify.app/";
+        window.location.href =
+          "https://extraordinary-stroopwafel-ebc42d.netlify.app/";
       }
       setIsAuthenticated(true);
     }
   }, []);
 
-  // Example authenticated request
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -36,7 +35,6 @@ function Home() {
           },
         }
       );
-      // Handle response
     } catch (error) {
       console.error("Error fetching data:", error);
     }
