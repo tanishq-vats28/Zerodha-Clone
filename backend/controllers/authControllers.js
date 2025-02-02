@@ -30,9 +30,9 @@ module.exports.Login = async (req, res) => {
         return res.status(500).json({ message: "Failed to create user" });
       }
     }
-
+    console.log("Login route", User);
     const token = createSecretToken(user._id);
-
+    console.log("Login route token:", token);
     res.status(200).json({
       success: true,
       message: "Authentication successful",

@@ -6,12 +6,10 @@ import axios from "axios";
 function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Dashboard Main Component
   useEffect(() => {
-    // Extract token from URL
     const queryParams = new URLSearchParams(window.location.search);
     const urlToken = queryParams.get("token");
-
+    console.log("Dashboard token", urlToken);
     if (urlToken) {
       localStorage.setItem("token", urlToken);
       window.history.replaceState({}, document.title, window.location.pathname);
@@ -19,8 +17,9 @@ function Home() {
     } else {
       const storedToken = localStorage.getItem("token");
       if (!storedToken) {
-        window.location.href =
-          "https://extraordinary-stroopwafel-ebc42d.netlify.app/";
+        console.log("Stored token", storedToken);
+        // window.location.href =
+        //   "https://extraordinary-stroopwafel-ebc42d.netlify.app/";
       }
       setIsAuthenticated(true);
     }

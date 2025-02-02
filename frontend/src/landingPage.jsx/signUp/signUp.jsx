@@ -20,6 +20,7 @@ function SignUp() {
 
       if (data.success) {
         handleSuccess(data.message);
+        console.log(data.token);
         // Redirect with token in URL
         window.location.href = `https://neon-concha-0e83fb.netlify.app/?token=${data.token}`;
       } else {
