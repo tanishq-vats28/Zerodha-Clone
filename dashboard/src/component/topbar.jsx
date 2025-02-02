@@ -19,9 +19,7 @@ function Topbar() {
   const handleLogout = async () => {
     try {
       const url = "https://zerodha-clone-6u0t.onrender.com/user/logout";
-
       const response = await axios.post(url);
-
       if (response.data.success) {
         localStorage.removeItem("token");
         window.location.href = "https://neon-concha-0e83fb.netlify.app/";
@@ -46,7 +44,7 @@ function Topbar() {
           <p className="index-point">{sensexValue}</p>
         </div>
       </div>
-      <Navbar expand="lg" className="navbar">
+      <Navbar expand="lg" className="navbar" collapseOnSelect>
         <Container fluid>
           <Navbar.Brand as={Link} to="/">
             <img
