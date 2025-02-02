@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Topbar() {
   const generateRandomValue = () => (Math.random() * 5).toFixed(2);
   const [niftyValue, setNiftyValue] = useState(generateRandomValue());
   const [sensexValue, setSensexValue] = useState(generateRandomValue());
+  const [expanded, setExpanded] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,6 +34,10 @@ function Topbar() {
     }
   };
 
+  const closeNavbar = () => {
+    setExpanded(false);
+  };
+
   return (
     <div className="topbar-container">
       <div className="options">
@@ -44,7 +50,7 @@ function Topbar() {
           <p className="index-point">{sensexValue}</p>
         </div>
       </div>
-      <Navbar expand="lg" className="navbar" collapseOnSelect>
+      <Navbar expand="lg" className="navbar" expanded={expanded}>
         <Container fluid>
           <Navbar.Brand as={Link} to="/">
             <img
@@ -53,22 +59,51 @@ function Topbar() {
               className="logo"
             />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            onClick={() => setExpanded(!expanded)}
+          />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto flex-column flex-lg-row gap-2 gap-lg-0">
-              <Nav.Link as={Link} to="/" className="nav-link">
+              <Nav.Link
+                as={Link}
+                to="/"
+                className="nav-link"
+                onClick={closeNavbar}
+              >
                 Dashboard
               </Nav.Link>
-              <Nav.Link as={Link} to="/orders" className="nav-link">
+              <Nav.Link
+                as={Link}
+                to="/orders"
+                className="nav-link"
+                onClick={closeNavbar}
+              >
                 Orders
               </Nav.Link>
-              <Nav.Link as={Link} to="/holdings" className="nav-link">
+              <Nav.Link
+                as={Link}
+                to="/holdings"
+                className="nav-link"
+                onClick={closeNavbar}
+              >
                 Holdings
               </Nav.Link>
-              <Nav.Link as={Link} to="/funds" className="nav-link">
+              <Nav.Link
+                as={Link}
+                to="/funds"
+                className="nav-link"
+                onClick={closeNavbar}
+              >
                 Funds
               </Nav.Link>
-              <Nav.Link onClick={handleLogout} className="nav-link">
+              <Nav.Link
+                onClick={() => {
+                  handleLogout();
+                  closeNavbar();
+                }}
+                className="nav-link"
+              >
                 Logout
               </Nav.Link>
             </Nav>
